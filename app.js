@@ -127,8 +127,11 @@ function clearSession() {
 }
 
 function showApp() {
+  $('#loginScreen')?.classList.remove('active');
   $('#loginScreen')?.classList.add('hidden');
+
   $('#appScreen')?.classList.remove('hidden');
+  $('#appScreen')?.classList.add('active');
 }
 
 function showLogin() {
