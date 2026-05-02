@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8a908215bdaacc530aba63f0aafe45b6a31a2255
 /* ============================================================
    PetShop PWA — app.js
    Lógica principal: auth, productos, carrito, SW, PWA install
@@ -5,8 +9,11 @@
 
 // ─── CONFIGURACIÓN ──────────────────────────────────────────
 const CONFIG = {
+<<<<<<< HEAD
   // Cuando estés en Azure, deja API_BASE vacío — las rutas relativas funcionan
   // Para desarrollo local con func start: 'http://localhost:7071'
+=======
+>>>>>>> 8a908215bdaacc530aba63f0aafe45b6a31a2255
   API_BASE: '',
   TOKEN_KEY: 'petshop_token',
   USER_KEY: 'petshop_user',
@@ -52,6 +59,10 @@ function showToast(message, type = 'info', duration = 3000) {
   }, duration);
 }
 
+<<<<<<< HEAD
+=======
+// FIX JSON AQUÍ
+>>>>>>> 8a908215bdaacc530aba63f0aafe45b6a31a2255
 async function apiCall(endpoint, options = {}) {
   const url = `${CONFIG.API_BASE}/api/${endpoint}`;
   const headers = {
@@ -62,12 +73,26 @@ async function apiCall(endpoint, options = {}) {
 
   try {
     const response = await fetch(url, { ...options, headers });
+<<<<<<< HEAD
     const data = await response.json();
+=======
+
+    let data;
+    try {
+      data = await response.json();
+    } catch {
+      data = {};
+    }
+>>>>>>> 8a908215bdaacc530aba63f0aafe45b6a31a2255
 
     if (!response.ok) {
       throw new Error(data.error || `Error ${response.status}`);
     }
     return data;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8a908215bdaacc530aba63f0aafe45b6a31a2255
   } catch (err) {
     if (!navigator.onLine) {
       throw new Error('Sin conexión a internet');
@@ -88,6 +113,7 @@ async function registerServiceWorker() {
       scope: '/'
     });
     console.log('[App] Service Worker registrado:', reg.scope);
+<<<<<<< HEAD
 
     reg.addEventListener('updatefound', () => {
       const worker = reg.installing;
@@ -97,11 +123,14 @@ async function registerServiceWorker() {
         }
       });
     });
+=======
+>>>>>>> 8a908215bdaacc530aba63f0aafe45b6a31a2255
   } catch (err) {
     console.error('[App] Error registrando SW:', err);
   }
 }
 
+<<<<<<< HEAD
 // ─── PWA INSTALL PROMPT ──────────────────────────────────────
 function initInstallPrompt() {
   window.addEventListener('beforeinstallprompt', (event) => {
@@ -158,6 +187,9 @@ function initConnectivity() {
 }
 
 // ─── AUTH ────────────────────────────────────────────────────
+=======
+// ─── AUTH ───────────────────────────────────────────────────
+>>>>>>> 8a908215bdaacc530aba63f0aafe45b6a31a2255
 function loadSession() {
   const token = localStorage.getItem(CONFIG.TOKEN_KEY);
   const user = localStorage.getItem(CONFIG.USER_KEY);
@@ -179,6 +211,7 @@ function saveSession(token, user) {
 function clearSession() {
   state.token = null;
   state.user = null;
+<<<<<<< HEAD
   state.cart = [];
   localStorage.removeItem(CONFIG.TOKEN_KEY);
   localStorage.removeItem(CONFIG.USER_KEY);
@@ -787,4 +820,40 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (!navigator.onLine) {
     $('#offlineBanner')?.classList.remove('hidden');
   }
+=======
+  localStorage.removeItem(CONFIG.TOKEN_KEY);
+  localStorage.removeItem(CONFIG.USER_KEY);
+}
+
+function showApp() {
+  $('#loginScreen')?.classList.remove('active');
+  $('#loginScreen')?.classList.add('hidden');
+
+  $('#appScreen')?.classList.remove('hidden');
+  $('#appScreen')?.classList.add('active');
+}
+
+function showLogin() {
+  $('#appScreen')?.classList.add('hidden');
+  $('#loginScreen')?.classList.remove('hidden');
+}
+
+// ─── INICIALIZACIÓN ─────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', async () => {
+
+  registerServiceWorker();
+
+  
+ // FORZAR SIEMPRE APP (ignorar login)
+state.user = {
+  name: 'Invitado',
+  email: 'guest@petshop.com',
+  role: 'guest'
+};
+
+state.token = null;
+
+ showApp();
+
+>>>>>>> 8a908215bdaacc530aba63f0aafe45b6a31a2255
 });
