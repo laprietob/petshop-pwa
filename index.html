@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#f4a100" />
+  <meta name="description" content="PetShop — Tu tienda de mascotas siempre disponible, incluso sin internet." />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="PetShop" />
+
+  <title>PetShop 🐾</title>
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="/public/manifest.json" />
+
+  <!-- Apple Touch Icons -->
+  <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152x152.png" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/icons/icon-96x96.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!--  PANTALLA LOGIN                           -->
+  <!-- ══════════════════════════════════════════ -->
+  <div id="loginScreen" class="screen active">
+    <div class="login-container">
+      <div class="login-brand">
+        <span class="brand-paw">🐾</span>
+        <h1 class="brand-name">PetShop</h1>
+        <p class="brand-tagline">Todo para tu mejor amigo</p>
+      </div>
+
+      <form id="loginForm" class="login-form" novalidate>
+        <div class="form-group">
+          <label for="emailInput">Correo electrónico</label>
+          <input
+            id="emailInput"
+            type="email"
+            placeholder="tu@correo.com"
+            autocomplete="email"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="passwordInput">Contraseña</label>
+          <div class="password-wrapper">
+            <input
+              id="passwordInput"
+              type="password"
+              placeholder="••••••••"
+              autocomplete="current-password"
+              required
+            />
+            <button type="button" class="toggle-password" aria-label="Ver contraseña">👁</button>
+          </div>
+        </div>
+
+        <div id="loginError" class="form-error hidden"></div>
+
+        <button type="submit" id="loginBtn" class="btn-primary">
+          <span class="btn-text">Ingresar</span>
+          <span class="btn-loader hidden">⏳</span>
+        </button>
+      </form>
+
+      <div class="login-demo">
+        <p>¿Prueba rápida? Usa:</p>
+        <code>admin@petshop.com / PetShop2024!</code>
+      </div>
+
+      <div id="offlineBanner" class="offline-banner hidden">
+        📵 Modo sin conexión — Algunos datos pueden no estar actualizados
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!--  APP PRINCIPAL                            -->
+  <!-- ══════════════════════════════════════════ -->
+  <div id="appScreen" class="screen hidden">
+
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-left">
+        <button id="menuBtn" class="icon-btn" aria-label="Menú">☰</button>
+        <span class="header-brand">🐾 PetShop</span>
+      </div>
+      <div class="header-right">
+        <div id="offlineIndicator" class="offline-dot hidden" title="Sin conexión">📵</div>
+        <button id="cartBtn" class="icon-btn cart-icon-btn" aria-label="Carrito">
+          🛒
+          <span id="cartBadge" class="cart-badge hidden">0</span>
+        </button>
+        <button id="logoutBtn" class="icon-btn" aria-label="Cerrar sesión">👤</button>
+      </div>
+    </header>
+
+    <!-- Menú lateral -->
+    <nav id="sideNav" class="side-nav hidden">
+      <div class="nav-header">
+        <span id="navUserName">Hola 👋</span>
+        <button id="closeNavBtn" class="icon-btn">✕</button>
+      </div>
+      <ul class="nav-links">
+        <li><button class="nav-link active" data-view="home">🏠 Inicio</button></li>
+        <li><button class="nav-link" data-view="products">🛍️ Productos</button></li>
+        <li><button class="nav-link" data-view="cart">🛒 Mi carrito</button></li>
+        <li><button class="nav-link" data-view="orders">📦 Mis pedidos</button></li>
+      </ul>
+    </nav>
+    <div id="navOverlay" class="nav-overlay hidden"></div>
+
+    <!-- Vistas -->
+    <main class="app-main">
+
+      <!-- ── HOME ── -->
+      <section id="viewHome" class="view active">
+        <div class="hero-banner">
+          <div class="hero-content">
+            <h2>Tu tienda de mascotas<br/><em>siempre disponible</em></h2>
+            <p>Descuentos, novedades y todo lo que necesita tu peludo</p>
+            <button class="btn-primary" onclick="app.showView('products')">Ver productos →</button>
+          </div>
+          <div class="hero-emoji">🐶🐱🐾</div>
+        </div>
+
+        <div class="section-title">
+          <h3>⭐ Destacados</h3>
+        </div>
+        <div id="featuredGrid" class="products-grid">
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+        </div>
+      </section>
+
+      <!-- ── PRODUCTS ── -->
+      <section id="viewProducts" class="view hidden">
+        <div class="view-header">
+          <h2>🛍️ Catálogo</h2>
+          <div class="search-bar">
+            <input id="searchInput" type="search" placeholder="Buscar productos…" />
+          </div>
+        </div>
+
+        <div class="categories-bar" role="tablist">
+          <button class="cat-btn active" data-cat="todos" role="tab">Todos</button>
+          <button class="cat-btn" data-cat="perros" role="tab">🐕 Perros</button>
+          <button class="cat-btn" data-cat="gatos" role="tab">🐈 Gatos</button>
+          <button class="cat-btn" data-cat="accesorios" role="tab">🎽 Accesorios</button>
+          <button class="cat-btn" data-cat="salud" role="tab">💊 Salud</button>
+        </div>
+
+        <div id="productsGrid" class="products-grid">
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+        </div>
+
+        <div id="emptyState" class="empty-state hidden">
+          <span>🔍</span>
+          <p>No encontramos productos para tu búsqueda</p>
+        </div>
+      </section>
+
+      <!-- ── CART ── -->
+      <section id="viewCart" class="view hidden">
+        <div class="view-header">
+          <h2>🛒 Mi carrito</h2>
+        </div>
+        <div id="cartItems" class="cart-list">
+          <!-- Se llena dinámicamente -->
+        </div>
+        <div id="cartEmpty" class="empty-state hidden">
+          <span>🛒</span>
+          <p>Tu carrito está vacío</p>
+          <button class="btn-secondary" onclick="app.showView('products')">Ver productos</button>
+        </div>
+        <div id="cartSummary" class="cart-summary hidden">
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span id="cartSubtotal">$0</span>
+          </div>
+          <div class="summary-row">
+            <span>Envío</span>
+            <span class="text-green">Gratis 🎉</span>
+          </div>
+          <div class="summary-row total-row">
+            <strong>Total</strong>
+            <strong id="cartTotal">$0</strong>
+          </div>
+          <button id="checkoutBtn" class="btn-primary full-width">Finalizar pedido 🐾</button>
+        </div>
+      </section>
+
+      <!-- ── ORDERS ── -->
+      <section id="viewOrders" class="view hidden">
+        <div class="view-header">
+          <h2>📦 Mis pedidos</h2>
+        </div>
+        <div id="ordersList" class="orders-list">
+          <div class="empty-state">
+            <span>📦</span>
+            <p>Aún no tienes pedidos</p>
+            <button class="btn-secondary" onclick="app.showView('products')">Empezar a comprar</button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Bottom nav (móvil) -->
+    <nav class="bottom-nav">
+      <button class="bottom-nav-btn active" data-view="home">
+        <span>🏠</span><small>Inicio</small>
+      </button>
+      <button class="bottom-nav-btn" data-view="products">
+        <span>🛍️</span><small>Tienda</small>
+      </button>
+      <button class="bottom-nav-btn" data-view="cart">
+        <span>🛒</span>
+        <span id="bottomCartBadge" class="cart-badge-bottom hidden">0</span>
+        <small>Carrito</small>
+      </button>
+      <button class="bottom-nav-btn" data-view="orders">
+        <span>📦</span><small>Pedidos</small>
+      </button>
+    </nav>
+  </div>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!--  MODAL PRODUCTO                           -->
+  <!-- ══════════════════════════════════════════ -->
+  <div id="productModal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <button class="modal-close" id="modalCloseBtn">✕</button>
+      <div id="modalBody"><!-- Contenido dinámico --></div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!--  TOAST NOTIFICATIONS                      -->
+  <!-- ══════════════════════════════════════════ -->
+  <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!--  INSTALL PROMPT (PWA)                     -->
+  <!-- ══════════════════════════════════════════ -->
+  <div id="installPrompt" class="install-prompt hidden">
+    <div class="install-content">
+      <span>📲</span>
+      <div>
+        <strong>Instala PetShop</strong>
+        <p>Úsala sin internet desde tu pantalla de inicio</p>
+      </div>
+      <div class="install-actions">
+        <button id="installBtn" class="btn-primary small">Instalar</button>
+        <button id="dismissInstall" class="btn-ghost small">Ahora no</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>

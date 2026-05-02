@@ -1,0 +1,122 @@
+[
+  {
+    "id": "prod001",
+    "name": "Croquetas Premium Perro Adulto 15kg",
+    "category": "perros",
+    "price": 145000,
+    "originalPrice": 165000,
+    "emoji": "🐕",
+    "description": "Alimento balanceado para perros adultos razas medianas y grandes. Rico en proteína de pollo y verduras. Soporta sistema inmune, piel y pelaje.",
+    "stock": 50,
+    "brand": "Royal Canin",
+    "featured": true
+  },
+  {
+    "id": "prod002",
+    "name": "Arena Sanitaria Aglomerante 10kg",
+    "category": "gatos",
+    "price": 45000,
+    "originalPrice": 52000,
+    "emoji": "🐈",
+    "description": "Arena de sílice de alta absorción, sin polvo y con control de olores por 30 días. Aglutina instantáneamente.",
+    "stock": 80,
+    "brand": "Catsan",
+    "featured": true
+  },
+  {
+    "id": "prod003",
+    "name": "Correa Retráctil Premium 5m",
+    "category": "accesorios",
+    "price": 55000,
+    "originalPrice": null,
+    "emoji": "🦮",
+    "description": "Correa retráctil de nylon reforzado con mango ergonómico antideslizante. Para perros de hasta 50kg.",
+    "stock": 30,
+    "brand": "Flexi",
+    "featured": false
+  },
+  {
+    "id": "prod004",
+    "name": "Antiparasitario Pipeta 10-25kg",
+    "category": "salud",
+    "price": 35000,
+    "originalPrice": 40000,
+    "emoji": "💊",
+    "description": "Pipeta antiparasitaria de amplio espectro contra pulgas, garrapatas y mosquitos. Protección por 1 mes.",
+    "stock": 100,
+    "brand": "Frontline",
+    "featured": true
+  },
+  {
+    "id": "prod005",
+    "name": "Cama Ortopédica Memory Foam",
+    "category": "accesorios",
+    "price": 120000,
+    "originalPrice": 145000,
+    "emoji": "🛏️",
+    "description": "Cama con espuma viscoelástica que se adapta al cuerpo de tu mascota, aliviando presión en articulaciones. Cubierta lavable.",
+    "stock": 15,
+    "brand": "PetComfort",
+    "featured": true
+  },
+  {
+    "id": "prod006",
+    "name": "Snacks Dentales Adulto x30",
+    "category": "perros",
+    "price": 22000,
+    "originalPrice": null,
+    "emoji": "🦴",
+    "description": "Premios masticables con acción limpiadora de sarro y placa bacteriana. Sabor pollo. Para perros +10 meses.",
+    "stock": 200,
+    "brand": "DentaFlex",
+    "featured": false
+  },
+  {
+    "id": "prod007",
+    "name": "Rascador Torre Gato 120cm",
+    "category": "gatos",
+    "price": 85000,
+    "originalPrice": 99000,
+    "emoji": "🐱",
+    "description": "Rascador vertical de sisal natural con plataforma superior, hamaca media y juguetes colgantes. Ideal para ejercicio y descanso.",
+    "stock": 20,
+    "brand": "CatTree",
+    "featured": false
+  },
+  {
+    "id": "prod008",
+    "name": "Vitaminas Articulaciones Senior",
+    "category": "salud",
+    "price": 55000,
+    "originalPrice": null,
+    "emoji": "💉",
+    "description": "Suplemento líquido con glucosamina, condroitina y MSM para mascotas de más de 7 años. Mejora movilidad articular.",
+    "stock": 45,
+    "brand": "VetPlus",
+    "featured": false
+  },
+  {
+    "id": "prod009",
+    "name": "Comedero Automático Programable",
+    "category": "accesorios",
+    "price": 175000,
+    "originalPrice": 210000,
+    "emoji": "🍽️",
+    "description": "Comedero con temporizador digital para 4 raciones diarias. Capacidad 3.5L. Compatible con croquetas y granos.",
+    "stock": 10,
+    "brand": "AutoFeed",
+    "featured": true
+  },
+  {
+    "id": "prod010",
+    "name": "Shampoo Antipulgas Perros",
+    "category": "salud",
+    "price": 28000,
+    "originalPrice": 32000,
+    "emoji": "🧴",
+    "description": "Shampoo con permetrina al 0.5%, lavanda y aloe vera. Acción repelente 15 días. Para perros de 3 meses en adelante.",
+    "stock": 60,
+    "brand": "PetClean",
+    "featured": false
+  }
+]
