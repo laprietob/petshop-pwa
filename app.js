@@ -154,19 +154,6 @@ state.user = {
 
 state.token = null;
 
-document.addEventListener('DOMContentLoaded', async () => {
-
-  registerServiceWorker();
-
-  // ⭐ FORZAR SIEMPRE APP (modo invitado)
-  state.user = {
-    name: 'Invitado',
-    email: 'guest@petshop.com',
-    role: 'guest'
-  };
-
-  state.token = null;
-
-  showApp();
+ showApp();
 
 });
