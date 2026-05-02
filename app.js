@@ -1,4 +1,4 @@
-```javascript
+
 /* ============================================================
    PetShop PWA — app.js
    Lógica principal: auth, productos, carrito, SW, PWA install
@@ -51,7 +51,7 @@ function showToast(message, type = 'info', duration = 3000) {
   }, duration);
 }
 
-// ⭐ FIX JSON AQUÍ
+// FIX JSON AQUÍ
 async function apiCall(endpoint, options = {}) {
   const url = `${CONFIG.API_BASE}/api/${endpoint}`;
   const headers = {
@@ -141,19 +141,17 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   registerServiceWorker();
 
-  // ⭐ MODO INVITADO AQUÍ
-  if (loadSession()) {
-    showApp();
-  } else {
-    state.user = {
-      name: 'Invitado',
-      email: 'guest@petshop.com',
-      role: 'guest'
-    };
-    state.token = null;
+  
+ // FORZAR SIEMPRE APP (ignorar login)
+state.user = {
+  name: 'Invitado',
+  email: 'guest@petshop.com',
+  role: 'guest'
+};
 
-    showApp();
+state.token = null;
+
+showApp();
   }
 
 });
-```
